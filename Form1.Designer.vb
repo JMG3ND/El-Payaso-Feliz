@@ -63,7 +63,7 @@ Partial Class Form1
         Me.CheckBoxAllegroAsiai = New System.Windows.Forms.CheckBox()
         Me.CheckBoxAllegroMolto = New System.Windows.Forms.CheckBox()
         Me.CheckBoxAllegroManNonTroppo = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxChoferesDesignados = New System.Windows.Forms.CheckBox()
         Me.NumericUpDownCantidadDeMeseros = New System.Windows.Forms.NumericUpDown()
         Me.CheckBoxEspectaculoArtistico = New System.Windows.Forms.CheckBox()
         Me.LabelCantidadDeMeseros = New System.Windows.Forms.Label()
@@ -120,6 +120,7 @@ Partial Class Form1
         'NumericUpDownCantidadDeNinos
         '
         Me.NumericUpDownCantidadDeNinos.Location = New System.Drawing.Point(476, 56)
+        Me.NumericUpDownCantidadDeNinos.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDownCantidadDeNinos.Name = "NumericUpDownCantidadDeNinos"
         Me.NumericUpDownCantidadDeNinos.Size = New System.Drawing.Size(97, 23)
         Me.NumericUpDownCantidadDeNinos.TabIndex = 3
@@ -253,14 +254,18 @@ Partial Class Form1
         '
         'NumericUpDownDuracionAdultos
         '
+        Me.NumericUpDownDuracionAdultos.DecimalPlaces = 1
         Me.NumericUpDownDuracionAdultos.Location = New System.Drawing.Point(82, 52)
+        Me.NumericUpDownDuracionAdultos.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDownDuracionAdultos.Name = "NumericUpDownDuracionAdultos"
         Me.NumericUpDownDuracionAdultos.Size = New System.Drawing.Size(97, 23)
         Me.NumericUpDownDuracionAdultos.TabIndex = 5
         '
         'NumericUpDownDuracionNinos
         '
+        Me.NumericUpDownDuracionNinos.DecimalPlaces = 1
         Me.NumericUpDownDuracionNinos.Location = New System.Drawing.Point(82, 22)
+        Me.NumericUpDownDuracionNinos.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDownDuracionNinos.Name = "NumericUpDownDuracionNinos"
         Me.NumericUpDownDuracionNinos.Size = New System.Drawing.Size(97, 23)
         Me.NumericUpDownDuracionNinos.TabIndex = 4
@@ -371,7 +376,7 @@ Partial Class Form1
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxImpresionDeInvitaciones)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.LabelCantidadDeChoferes)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.GroupBoxEspectaculos)
-        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBox2)
+        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxChoferesDesignados)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.NumericUpDownCantidadDeMeseros)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxEspectaculoArtistico)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.LabelCantidadDeMeseros)
@@ -390,10 +395,14 @@ Partial Class Form1
         '
         'NumericUpDownCantidadDeChoferes
         '
+        Me.NumericUpDownCantidadDeChoferes.Enabled = False
         Me.NumericUpDownCantidadDeChoferes.Location = New System.Drawing.Point(162, 209)
+        Me.NumericUpDownCantidadDeChoferes.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.NumericUpDownCantidadDeChoferes.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDownCantidadDeChoferes.Name = "NumericUpDownCantidadDeChoferes"
         Me.NumericUpDownCantidadDeChoferes.Size = New System.Drawing.Size(90, 23)
         Me.NumericUpDownCantidadDeChoferes.TabIndex = 14
+        Me.NumericUpDownCantidadDeChoferes.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'CheckBoxDivulgacionDeFiesta
         '
@@ -418,6 +427,7 @@ Partial Class Form1
         'LabelCantidadDeChoferes
         '
         Me.LabelCantidadDeChoferes.AutoSize = True
+        Me.LabelCantidadDeChoferes.Enabled = False
         Me.LabelCantidadDeChoferes.Location = New System.Drawing.Point(38, 211)
         Me.LabelCantidadDeChoferes.Name = "LabelCantidadDeChoferes"
         Me.LabelCantidadDeChoferes.Size = New System.Drawing.Size(121, 15)
@@ -428,6 +438,7 @@ Partial Class Form1
         '
         Me.GroupBoxEspectaculos.Controls.Add(Me.GroupBoxEspectaculoDePinatica)
         Me.GroupBoxEspectaculos.Controls.Add(Me.GroupBoxEspectaculoDePinata)
+        Me.GroupBoxEspectaculos.Enabled = False
         Me.GroupBoxEspectaculos.Location = New System.Drawing.Point(15, 313)
         Me.GroupBoxEspectaculos.Name = "GroupBoxEspectaculos"
         Me.GroupBoxEspectaculos.Size = New System.Drawing.Size(318, 258)
@@ -530,22 +541,26 @@ Partial Class Form1
         Me.CheckBoxAllegroManNonTroppo.Text = "Música infantil allegro man non toppo"
         Me.CheckBoxAllegroManNonTroppo.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'CheckBoxChoferesDesignados
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(15, 187)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(136, 19)
-        Me.CheckBox2.TabIndex = 12
-        Me.CheckBox2.Text = "Choferes designados"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBoxChoferesDesignados.AutoSize = True
+        Me.CheckBoxChoferesDesignados.Location = New System.Drawing.Point(15, 187)
+        Me.CheckBoxChoferesDesignados.Name = "CheckBoxChoferesDesignados"
+        Me.CheckBoxChoferesDesignados.Size = New System.Drawing.Size(136, 19)
+        Me.CheckBoxChoferesDesignados.TabIndex = 12
+        Me.CheckBoxChoferesDesignados.Text = "Choferes designados"
+        Me.CheckBoxChoferesDesignados.UseVisualStyleBackColor = True
         '
         'NumericUpDownCantidadDeMeseros
         '
+        Me.NumericUpDownCantidadDeMeseros.Enabled = False
         Me.NumericUpDownCantidadDeMeseros.Location = New System.Drawing.Point(162, 167)
+        Me.NumericUpDownCantidadDeMeseros.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.NumericUpDownCantidadDeMeseros.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDownCantidadDeMeseros.Name = "NumericUpDownCantidadDeMeseros"
         Me.NumericUpDownCantidadDeMeseros.Size = New System.Drawing.Size(90, 23)
         Me.NumericUpDownCantidadDeMeseros.TabIndex = 6
+        Me.NumericUpDownCantidadDeMeseros.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'CheckBoxEspectaculoArtistico
         '
@@ -560,6 +575,7 @@ Partial Class Form1
         'LabelCantidadDeMeseros
         '
         Me.LabelCantidadDeMeseros.AutoSize = True
+        Me.LabelCantidadDeMeseros.Enabled = False
         Me.LabelCantidadDeMeseros.Location = New System.Drawing.Point(38, 169)
         Me.LabelCantidadDeMeseros.Name = "LabelCantidadDeMeseros"
         Me.LabelCantidadDeMeseros.Size = New System.Drawing.Size(118, 15)
@@ -581,9 +597,9 @@ Partial Class Form1
         Me.CheckBoxRecreacionDirigidaParaNinos.AutoSize = True
         Me.CheckBoxRecreacionDirigidaParaNinos.Location = New System.Drawing.Point(15, 122)
         Me.CheckBoxRecreacionDirigidaParaNinos.Name = "CheckBoxRecreacionDirigidaParaNinos"
-        Me.CheckBoxRecreacionDirigidaParaNinos.Size = New System.Drawing.Size(207, 19)
+        Me.CheckBoxRecreacionDirigidaParaNinos.Size = New System.Drawing.Size(203, 19)
         Me.CheckBoxRecreacionDirigidaParaNinos.TabIndex = 3
-        Me.CheckBoxRecreacionDirigidaParaNinos.Text = "Recreación dirigida para los noños"
+        Me.CheckBoxRecreacionDirigidaParaNinos.Text = "Recreación dirigida para los niños"
         Me.CheckBoxRecreacionDirigidaParaNinos.UseVisualStyleBackColor = True
         '
         'CheckBoxMusicaParaReunion
@@ -609,6 +625,7 @@ Partial Class Form1
         'CheckBoxIncluirBebidaEnRecordatorio
         '
         Me.CheckBoxIncluirBebidaEnRecordatorio.AutoSize = True
+        Me.CheckBoxIncluirBebidaEnRecordatorio.Enabled = False
         Me.CheckBoxIncluirBebidaEnRecordatorio.Location = New System.Drawing.Point(38, 263)
         Me.CheckBoxIncluirBebidaEnRecordatorio.Name = "CheckBoxIncluirBebidaEnRecordatorio"
         Me.CheckBoxIncluirBebidaEnRecordatorio.Size = New System.Drawing.Size(182, 19)
@@ -704,7 +721,7 @@ Partial Class Form1
     Friend WithEvents LabelCantidadDeMeseros As Label
     Friend WithEvents NumericUpDownCantidadDeChoferes As NumericUpDown
     Friend WithEvents LabelCantidadDeChoferes As Label
-    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents CheckBoxChoferesDesignados As CheckBox
     Friend WithEvents CheckBoxDivulgacionDeFiesta As CheckBox
     Friend WithEvents CheckBoxImpresionDeInvitaciones As CheckBox
     Friend WithEvents GroupBoxEspectaculos As GroupBox
