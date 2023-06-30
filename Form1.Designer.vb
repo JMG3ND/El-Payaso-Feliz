@@ -22,8 +22,9 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.LabelTitle = New System.Windows.Forms.Label()
-        Me.LabelCotizacion = New System.Windows.Forms.Label()
+        Me.LabelNuevaCotizacion = New System.Windows.Forms.Label()
         Me.LabelCantidadDeNinos = New System.Windows.Forms.Label()
         Me.NumericUpDownCantidadDeNinos = New System.Windows.Forms.NumericUpDown()
         Me.GroupBoxTipoDeComida = New System.Windows.Forms.GroupBox()
@@ -49,6 +50,9 @@ Partial Class Form1
         Me.RadioButtonTarjetaCredito = New System.Windows.Forms.RadioButton()
         Me.RadioButtonTarjetaDebito = New System.Windows.Forms.RadioButton()
         Me.GroupBoxServiciosAdicionales = New System.Windows.Forms.GroupBox()
+        Me.NumericUpDownDuracionMusica = New System.Windows.Forms.NumericUpDown()
+        Me.LabelCantidadDeHorasParaLaMusica = New System.Windows.Forms.Label()
+        Me.CheckBoxMusicaParaReunion = New System.Windows.Forms.CheckBox()
         Me.NumericUpDownCantidadDeChoferes = New System.Windows.Forms.NumericUpDown()
         Me.CheckBoxDivulgacionDeFiesta = New System.Windows.Forms.CheckBox()
         Me.CheckBoxImpresionDeInvitaciones = New System.Windows.Forms.CheckBox()
@@ -68,11 +72,20 @@ Partial Class Form1
         Me.CheckBoxEspectaculoArtistico = New System.Windows.Forms.CheckBox()
         Me.LabelCantidadDeMeseros = New System.Windows.Forms.Label()
         Me.CheckBoxServicioDeMesero = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxRecreacionDirigidaParaNinos = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxMusicaParaReunion = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos = New System.Windows.Forms.CheckBox()
         Me.CheckBoxDecoracionDeSalon = New System.Windows.Forms.CheckBox()
         Me.CheckBoxIncluirBebidaEnRecordatorio = New System.Windows.Forms.CheckBox()
         Me.CheckBoxRecordatoriosParaInvitados = New System.Windows.Forms.CheckBox()
+        Me.ButtonConfirmar = New System.Windows.Forms.Button()
+        Me.DataGridViewTotal = New System.Windows.Forms.DataGridView()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelCotizacion = New System.Windows.Forms.Label()
+        Me.GroupBoxMoneda = New System.Windows.Forms.GroupBox()
+        Me.RadioButtonBalboa = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonPesosColombianos = New System.Windows.Forms.RadioButton()
+        Me.NumericUpDownCantidadDeNinas = New System.Windows.Forms.NumericUpDown()
+        Me.LabelCantidadDeNinas = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownCantidadDeNinos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxTipoDeComida.SuspendLayout()
         Me.GroupBoxSalonDeReunion.SuspendLayout()
@@ -81,11 +94,15 @@ Partial Class Form1
         CType(Me.NumericUpDownDuracionNinos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxFormaDePago.SuspendLayout()
         Me.GroupBoxServiciosAdicionales.SuspendLayout()
+        CType(Me.NumericUpDownDuracionMusica, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownCantidadDeChoferes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxEspectaculos.SuspendLayout()
         Me.GroupBoxEspectaculoDePinatica.SuspendLayout()
         Me.GroupBoxEspectaculoDePinata.SuspendLayout()
         CType(Me.NumericUpDownCantidadDeMeseros, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewTotal, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBoxMoneda.SuspendLayout()
+        CType(Me.NumericUpDownCantidadDeNinas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelTitle
@@ -98,15 +115,15 @@ Partial Class Form1
         Me.LabelTitle.TabIndex = 0
         Me.LabelTitle.Text = "El Payaso Feliz Cotizaciones"
         '
-        'LabelCotizacion
+        'LabelNuevaCotizacion
         '
-        Me.LabelCotizacion.AutoSize = True
-        Me.LabelCotizacion.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.LabelCotizacion.Location = New System.Drawing.Point(12, 36)
-        Me.LabelCotizacion.Name = "LabelCotizacion"
-        Me.LabelCotizacion.Size = New System.Drawing.Size(137, 19)
-        Me.LabelCotizacion.TabIndex = 1
-        Me.LabelCotizacion.Text = "Nueva Cotización"
+        Me.LabelNuevaCotizacion.AutoSize = True
+        Me.LabelNuevaCotizacion.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelNuevaCotizacion.Location = New System.Drawing.Point(12, 36)
+        Me.LabelNuevaCotizacion.Name = "LabelNuevaCotizacion"
+        Me.LabelNuevaCotizacion.Size = New System.Drawing.Size(137, 19)
+        Me.LabelNuevaCotizacion.TabIndex = 1
+        Me.LabelNuevaCotizacion.Text = "Nueva Cotización"
         '
         'LabelCantidadDeNinos
         '
@@ -119,6 +136,9 @@ Partial Class Form1
         '
         'NumericUpDownCantidadDeNinos
         '
+        Me.NumericUpDownCantidadDeNinos.AccessibleDescription = "Si la cantidad de niños supera los 100 se considera una Piñata en vez de Piñatica" &
+    ""
+        Me.NumericUpDownCantidadDeNinos.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolTip
         Me.NumericUpDownCantidadDeNinos.Location = New System.Drawing.Point(476, 56)
         Me.NumericUpDownCantidadDeNinos.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDownCantidadDeNinos.Name = "NumericUpDownCantidadDeNinos"
@@ -132,7 +152,7 @@ Partial Class Form1
         Me.GroupBoxTipoDeComida.Controls.Add(Me.RadioButtonPlatoEconomico)
         Me.GroupBoxTipoDeComida.Controls.Add(Me.RadioButtonPlatoEspecial)
         Me.GroupBoxTipoDeComida.Controls.Add(Me.RadioButtonBuffet)
-        Me.GroupBoxTipoDeComida.Location = New System.Drawing.Point(366, 196)
+        Me.GroupBoxTipoDeComida.Location = New System.Drawing.Point(366, 265)
         Me.GroupBoxTipoDeComida.Name = "GroupBoxTipoDeComida"
         Me.GroupBoxTipoDeComida.Size = New System.Drawing.Size(208, 178)
         Me.GroupBoxTipoDeComida.TabIndex = 4
@@ -146,7 +166,6 @@ Partial Class Form1
         Me.RadioButtonTipicaColombiana.Name = "RadioButtonTipicaColombiana"
         Me.RadioButtonTipicaColombiana.Size = New System.Drawing.Size(124, 19)
         Me.RadioButtonTipicaColombiana.TabIndex = 4
-        Me.RadioButtonTipicaColombiana.TabStop = True
         Me.RadioButtonTipicaColombiana.Text = "Típica Colombiana"
         Me.RadioButtonTipicaColombiana.UseVisualStyleBackColor = True
         '
@@ -157,7 +176,6 @@ Partial Class Form1
         Me.RadioButtonComidaFormal.Name = "RadioButtonComidaFormal"
         Me.RadioButtonComidaFormal.Size = New System.Drawing.Size(107, 19)
         Me.RadioButtonComidaFormal.TabIndex = 3
-        Me.RadioButtonComidaFormal.TabStop = True
         Me.RadioButtonComidaFormal.Text = "Comida Formal"
         Me.RadioButtonComidaFormal.UseVisualStyleBackColor = True
         '
@@ -168,7 +186,6 @@ Partial Class Form1
         Me.RadioButtonPlatoEconomico.Name = "RadioButtonPlatoEconomico"
         Me.RadioButtonPlatoEconomico.Size = New System.Drawing.Size(115, 19)
         Me.RadioButtonPlatoEconomico.TabIndex = 2
-        Me.RadioButtonPlatoEconomico.TabStop = True
         Me.RadioButtonPlatoEconomico.Text = "Plato Económico"
         Me.RadioButtonPlatoEconomico.UseVisualStyleBackColor = True
         '
@@ -179,13 +196,13 @@ Partial Class Form1
         Me.RadioButtonPlatoEspecial.Name = "RadioButtonPlatoEspecial"
         Me.RadioButtonPlatoEspecial.Size = New System.Drawing.Size(97, 19)
         Me.RadioButtonPlatoEspecial.TabIndex = 1
-        Me.RadioButtonPlatoEspecial.TabStop = True
         Me.RadioButtonPlatoEspecial.Text = "Plato especial"
         Me.RadioButtonPlatoEspecial.UseVisualStyleBackColor = True
         '
         'RadioButtonBuffet
         '
         Me.RadioButtonBuffet.AutoSize = True
+        Me.RadioButtonBuffet.Checked = True
         Me.RadioButtonBuffet.Location = New System.Drawing.Point(50, 24)
         Me.RadioButtonBuffet.Name = "RadioButtonBuffet"
         Me.RadioButtonBuffet.Size = New System.Drawing.Size(57, 19)
@@ -199,7 +216,7 @@ Partial Class Form1
         Me.GroupBoxSalonDeReunion.Controls.Add(Me.RadioButtonSalonC)
         Me.GroupBoxSalonDeReunion.Controls.Add(Me.RadioButtonSalonB)
         Me.GroupBoxSalonDeReunion.Controls.Add(Me.RadioButtonSalonA)
-        Me.GroupBoxSalonDeReunion.Location = New System.Drawing.Point(366, 85)
+        Me.GroupBoxSalonDeReunion.Location = New System.Drawing.Point(366, 154)
         Me.GroupBoxSalonDeReunion.Name = "GroupBoxSalonDeReunion"
         Me.GroupBoxSalonDeReunion.Size = New System.Drawing.Size(208, 105)
         Me.GroupBoxSalonDeReunion.TabIndex = 5
@@ -213,7 +230,6 @@ Partial Class Form1
         Me.RadioButtonSalonC.Name = "RadioButtonSalonC"
         Me.RadioButtonSalonC.Size = New System.Drawing.Size(65, 19)
         Me.RadioButtonSalonC.TabIndex = 2
-        Me.RadioButtonSalonC.TabStop = True
         Me.RadioButtonSalonC.Text = "Salón C"
         Me.RadioButtonSalonC.UseVisualStyleBackColor = True
         '
@@ -224,13 +240,13 @@ Partial Class Form1
         Me.RadioButtonSalonB.Name = "RadioButtonSalonB"
         Me.RadioButtonSalonB.Size = New System.Drawing.Size(64, 19)
         Me.RadioButtonSalonB.TabIndex = 1
-        Me.RadioButtonSalonB.TabStop = True
         Me.RadioButtonSalonB.Text = "Salón B"
         Me.RadioButtonSalonB.UseVisualStyleBackColor = True
         '
         'RadioButtonSalonA
         '
         Me.RadioButtonSalonA.AutoSize = True
+        Me.RadioButtonSalonA.Checked = True
         Me.RadioButtonSalonA.Location = New System.Drawing.Point(50, 22)
         Me.RadioButtonSalonA.Name = "RadioButtonSalonA"
         Me.RadioButtonSalonA.Size = New System.Drawing.Size(65, 19)
@@ -245,7 +261,7 @@ Partial Class Form1
         Me.GroupBoxDuracionDeFiesta.Controls.Add(Me.NumericUpDownDuracionNinos)
         Me.GroupBoxDuracionDeFiesta.Controls.Add(Me.LabelAdultos)
         Me.GroupBoxDuracionDeFiesta.Controls.Add(Me.LabelNinos)
-        Me.GroupBoxDuracionDeFiesta.Location = New System.Drawing.Point(580, 85)
+        Me.GroupBoxDuracionDeFiesta.Location = New System.Drawing.Point(580, 154)
         Me.GroupBoxDuracionDeFiesta.Name = "GroupBoxDuracionDeFiesta"
         Me.GroupBoxDuracionDeFiesta.Size = New System.Drawing.Size(208, 105)
         Me.GroupBoxDuracionDeFiesta.TabIndex = 7
@@ -296,7 +312,7 @@ Partial Class Form1
         Me.GroupBoxFormaDePago.Controls.Add(Me.RadioButtonChequeAlDia)
         Me.GroupBoxFormaDePago.Controls.Add(Me.RadioButtonTarjetaCredito)
         Me.GroupBoxFormaDePago.Controls.Add(Me.RadioButtonTarjetaDebito)
-        Me.GroupBoxFormaDePago.Location = New System.Drawing.Point(580, 196)
+        Me.GroupBoxFormaDePago.Location = New System.Drawing.Point(580, 265)
         Me.GroupBoxFormaDePago.Name = "GroupBoxFormaDePago"
         Me.GroupBoxFormaDePago.Size = New System.Drawing.Size(208, 178)
         Me.GroupBoxFormaDePago.TabIndex = 8
@@ -306,6 +322,7 @@ Partial Class Form1
         'RadioButtonEfectivo
         '
         Me.RadioButtonEfectivo.AutoSize = True
+        Me.RadioButtonEfectivo.Checked = True
         Me.RadioButtonEfectivo.Location = New System.Drawing.Point(50, 149)
         Me.RadioButtonEfectivo.Name = "RadioButtonEfectivo"
         Me.RadioButtonEfectivo.Size = New System.Drawing.Size(67, 19)
@@ -321,7 +338,6 @@ Partial Class Form1
         Me.RadioButtonBonoCorporativo.Name = "RadioButtonBonoCorporativo"
         Me.RadioButtonBonoCorporativo.Size = New System.Drawing.Size(119, 19)
         Me.RadioButtonBonoCorporativo.TabIndex = 4
-        Me.RadioButtonBonoCorporativo.TabStop = True
         Me.RadioButtonBonoCorporativo.Text = "Bono Corporativo"
         Me.RadioButtonBonoCorporativo.UseVisualStyleBackColor = True
         '
@@ -332,7 +348,6 @@ Partial Class Form1
         Me.RadioButtonChequePostFecha.Name = "RadioButtonChequePostFecha"
         Me.RadioButtonChequePostFecha.Size = New System.Drawing.Size(126, 19)
         Me.RadioButtonChequePostFecha.TabIndex = 3
-        Me.RadioButtonChequePostFecha.TabStop = True
         Me.RadioButtonChequePostFecha.Text = "Cheque Post Fecha"
         Me.RadioButtonChequePostFecha.UseVisualStyleBackColor = True
         '
@@ -343,7 +358,6 @@ Partial Class Form1
         Me.RadioButtonChequeAlDia.Name = "RadioButtonChequeAlDia"
         Me.RadioButtonChequeAlDia.Size = New System.Drawing.Size(97, 19)
         Me.RadioButtonChequeAlDia.TabIndex = 2
-        Me.RadioButtonChequeAlDia.TabStop = True
         Me.RadioButtonChequeAlDia.Text = "Cheque al día"
         Me.RadioButtonChequeAlDia.UseVisualStyleBackColor = True
         '
@@ -354,7 +368,6 @@ Partial Class Form1
         Me.RadioButtonTarjetaCredito.Name = "RadioButtonTarjetaCredito"
         Me.RadioButtonTarjetaCredito.Size = New System.Drawing.Size(115, 19)
         Me.RadioButtonTarjetaCredito.TabIndex = 1
-        Me.RadioButtonTarjetaCredito.TabStop = True
         Me.RadioButtonTarjetaCredito.Text = "Tarjeta de crédito"
         Me.RadioButtonTarjetaCredito.UseVisualStyleBackColor = True
         '
@@ -365,12 +378,14 @@ Partial Class Form1
         Me.RadioButtonTarjetaDebito.Name = "RadioButtonTarjetaDebito"
         Me.RadioButtonTarjetaDebito.Size = New System.Drawing.Size(112, 19)
         Me.RadioButtonTarjetaDebito.TabIndex = 0
-        Me.RadioButtonTarjetaDebito.TabStop = True
         Me.RadioButtonTarjetaDebito.Text = "Tarjeta de débito"
         Me.RadioButtonTarjetaDebito.UseVisualStyleBackColor = True
         '
         'GroupBoxServiciosAdicionales
         '
+        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.NumericUpDownDuracionMusica)
+        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.LabelCantidadDeHorasParaLaMusica)
+        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxMusicaParaReunion)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.NumericUpDownCantidadDeChoferes)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxDivulgacionDeFiesta)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxImpresionDeInvitaciones)
@@ -381,22 +396,53 @@ Partial Class Form1
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxEspectaculoArtistico)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.LabelCantidadDeMeseros)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxServicioDeMesero)
-        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxRecreacionDirigidaParaNinos)
-        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxMusicaParaReunion)
+        Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxRecreacionDirigidaParaNinosYAdultos)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxDecoracionDeSalon)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxIncluirBebidaEnRecordatorio)
         Me.GroupBoxServiciosAdicionales.Controls.Add(Me.CheckBoxRecordatoriosParaInvitados)
         Me.GroupBoxServiciosAdicionales.Location = New System.Drawing.Point(12, 58)
         Me.GroupBoxServiciosAdicionales.Name = "GroupBoxServiciosAdicionales"
-        Me.GroupBoxServiciosAdicionales.Size = New System.Drawing.Size(348, 583)
+        Me.GroupBoxServiciosAdicionales.Size = New System.Drawing.Size(348, 588)
         Me.GroupBoxServiciosAdicionales.TabIndex = 9
         Me.GroupBoxServiciosAdicionales.TabStop = False
         Me.GroupBoxServiciosAdicionales.Text = "Servicios Adicionales"
         '
+        'NumericUpDownDuracionMusica
+        '
+        Me.NumericUpDownDuracionMusica.DecimalPlaces = 1
+        Me.NumericUpDownDuracionMusica.Enabled = False
+        Me.NumericUpDownDuracionMusica.Location = New System.Drawing.Point(226, 70)
+        Me.NumericUpDownDuracionMusica.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.NumericUpDownDuracionMusica.Minimum = New Decimal(New Integer() {3, 0, 0, 0})
+        Me.NumericUpDownDuracionMusica.Name = "NumericUpDownDuracionMusica"
+        Me.NumericUpDownDuracionMusica.Size = New System.Drawing.Size(90, 23)
+        Me.NumericUpDownDuracionMusica.TabIndex = 17
+        Me.NumericUpDownDuracionMusica.Value = New Decimal(New Integer() {3, 0, 0, 0})
+        '
+        'LabelCantidadDeHorasParaLaMusica
+        '
+        Me.LabelCantidadDeHorasParaLaMusica.AutoSize = True
+        Me.LabelCantidadDeHorasParaLaMusica.Enabled = False
+        Me.LabelCantidadDeHorasParaLaMusica.Location = New System.Drawing.Point(165, 72)
+        Me.LabelCantidadDeHorasParaLaMusica.Name = "LabelCantidadDeHorasParaLaMusica"
+        Me.LabelCantidadDeHorasParaLaMusica.Size = New System.Drawing.Size(55, 15)
+        Me.LabelCantidadDeHorasParaLaMusica.TabIndex = 16
+        Me.LabelCantidadDeHorasParaLaMusica.Text = "Duración"
+        '
+        'CheckBoxMusicaParaReunion
+        '
+        Me.CheckBoxMusicaParaReunion.AutoSize = True
+        Me.CheckBoxMusicaParaReunion.Location = New System.Drawing.Point(15, 71)
+        Me.CheckBoxMusicaParaReunion.Name = "CheckBoxMusicaParaReunion"
+        Me.CheckBoxMusicaParaReunion.Size = New System.Drawing.Size(146, 19)
+        Me.CheckBoxMusicaParaReunion.TabIndex = 15
+        Me.CheckBoxMusicaParaReunion.Text = "Música para la reunión"
+        Me.CheckBoxMusicaParaReunion.UseVisualStyleBackColor = True
+        '
         'NumericUpDownCantidadDeChoferes
         '
         Me.NumericUpDownCantidadDeChoferes.Enabled = False
-        Me.NumericUpDownCantidadDeChoferes.Location = New System.Drawing.Point(162, 209)
+        Me.NumericUpDownCantidadDeChoferes.Location = New System.Drawing.Point(165, 207)
         Me.NumericUpDownCantidadDeChoferes.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDownCantidadDeChoferes.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDownCantidadDeChoferes.Name = "NumericUpDownCantidadDeChoferes"
@@ -428,7 +474,7 @@ Partial Class Form1
         '
         Me.LabelCantidadDeChoferes.AutoSize = True
         Me.LabelCantidadDeChoferes.Enabled = False
-        Me.LabelCantidadDeChoferes.Location = New System.Drawing.Point(38, 211)
+        Me.LabelCantidadDeChoferes.Location = New System.Drawing.Point(38, 210)
         Me.LabelCantidadDeChoferes.Name = "LabelCantidadDeChoferes"
         Me.LabelCantidadDeChoferes.Size = New System.Drawing.Size(121, 15)
         Me.LabelCantidadDeChoferes.TabIndex = 13
@@ -439,7 +485,7 @@ Partial Class Form1
         Me.GroupBoxEspectaculos.Controls.Add(Me.GroupBoxEspectaculoDePinatica)
         Me.GroupBoxEspectaculos.Controls.Add(Me.GroupBoxEspectaculoDePinata)
         Me.GroupBoxEspectaculos.Enabled = False
-        Me.GroupBoxEspectaculos.Location = New System.Drawing.Point(15, 313)
+        Me.GroupBoxEspectaculos.Location = New System.Drawing.Point(15, 312)
         Me.GroupBoxEspectaculos.Name = "GroupBoxEspectaculos"
         Me.GroupBoxEspectaculos.Size = New System.Drawing.Size(318, 258)
         Me.GroupBoxEspectaculos.TabIndex = 9
@@ -452,6 +498,7 @@ Partial Class Form1
         Me.GroupBoxEspectaculoDePinatica.Controls.Add(Me.CheckBoxMusicaAdultoVivace)
         Me.GroupBoxEspectaculoDePinatica.Controls.Add(Me.CheckBoxMusicaInfantilAdagio)
         Me.GroupBoxEspectaculoDePinatica.Controls.Add(Me.CheckBoxMusicaInfantilAndante)
+        Me.GroupBoxEspectaculoDePinatica.Enabled = False
         Me.GroupBoxEspectaculoDePinatica.Location = New System.Drawing.Point(7, 127)
         Me.GroupBoxEspectaculoDePinatica.Name = "GroupBoxEspectaculoDePinatica"
         Me.GroupBoxEspectaculoDePinatica.Size = New System.Drawing.Size(305, 123)
@@ -464,9 +511,9 @@ Partial Class Form1
         Me.CheckBoxMusicaAdultoPresto.AutoSize = True
         Me.CheckBoxMusicaAdultoPresto.Location = New System.Drawing.Point(6, 97)
         Me.CheckBoxMusicaAdultoPresto.Name = "CheckBoxMusicaAdultoPresto"
-        Me.CheckBoxMusicaAdultoPresto.Size = New System.Drawing.Size(137, 19)
+        Me.CheckBoxMusicaAdultoPresto.Size = New System.Drawing.Size(140, 19)
         Me.CheckBoxMusicaAdultoPresto.TabIndex = 12
-        Me.CheckBoxMusicaAdultoPresto.Text = "Música adulto presto"
+        Me.CheckBoxMusicaAdultoPresto.Text = "Musical adulto presto"
         Me.CheckBoxMusicaAdultoPresto.UseVisualStyleBackColor = True
         '
         'CheckBoxMusicaAdultoVivace
@@ -474,9 +521,9 @@ Partial Class Form1
         Me.CheckBoxMusicaAdultoVivace.AutoSize = True
         Me.CheckBoxMusicaAdultoVivace.Location = New System.Drawing.Point(6, 72)
         Me.CheckBoxMusicaAdultoVivace.Name = "CheckBoxMusicaAdultoVivace"
-        Me.CheckBoxMusicaAdultoVivace.Size = New System.Drawing.Size(137, 19)
+        Me.CheckBoxMusicaAdultoVivace.Size = New System.Drawing.Size(140, 19)
         Me.CheckBoxMusicaAdultoVivace.TabIndex = 11
-        Me.CheckBoxMusicaAdultoVivace.Text = "Música adulto vivace"
+        Me.CheckBoxMusicaAdultoVivace.Text = "Musical adulto vivace"
         Me.CheckBoxMusicaAdultoVivace.UseVisualStyleBackColor = True
         '
         'CheckBoxMusicaInfantilAdagio
@@ -484,9 +531,9 @@ Partial Class Form1
         Me.CheckBoxMusicaInfantilAdagio.AutoSize = True
         Me.CheckBoxMusicaInfantilAdagio.Location = New System.Drawing.Point(6, 47)
         Me.CheckBoxMusicaInfantilAdagio.Name = "CheckBoxMusicaInfantilAdagio"
-        Me.CheckBoxMusicaInfantilAdagio.Size = New System.Drawing.Size(145, 19)
+        Me.CheckBoxMusicaInfantilAdagio.Size = New System.Drawing.Size(148, 19)
         Me.CheckBoxMusicaInfantilAdagio.TabIndex = 10
-        Me.CheckBoxMusicaInfantilAdagio.Text = "Música infantil Adagio"
+        Me.CheckBoxMusicaInfantilAdagio.Text = "Musical infantil Adagio"
         Me.CheckBoxMusicaInfantilAdagio.UseVisualStyleBackColor = True
         '
         'CheckBoxMusicaInfantilAndante
@@ -494,9 +541,9 @@ Partial Class Form1
         Me.CheckBoxMusicaInfantilAndante.AutoSize = True
         Me.CheckBoxMusicaInfantilAndante.Location = New System.Drawing.Point(6, 22)
         Me.CheckBoxMusicaInfantilAndante.Name = "CheckBoxMusicaInfantilAndante"
-        Me.CheckBoxMusicaInfantilAndante.Size = New System.Drawing.Size(150, 19)
+        Me.CheckBoxMusicaInfantilAndante.Size = New System.Drawing.Size(153, 19)
         Me.CheckBoxMusicaInfantilAndante.TabIndex = 9
-        Me.CheckBoxMusicaInfantilAndante.Text = "Música infantil andante"
+        Me.CheckBoxMusicaInfantilAndante.Text = "Musical infantil andante"
         Me.CheckBoxMusicaInfantilAndante.UseVisualStyleBackColor = True
         '
         'GroupBoxEspectaculoDePinata
@@ -504,6 +551,7 @@ Partial Class Form1
         Me.GroupBoxEspectaculoDePinata.Controls.Add(Me.CheckBoxAllegroAsiai)
         Me.GroupBoxEspectaculoDePinata.Controls.Add(Me.CheckBoxAllegroMolto)
         Me.GroupBoxEspectaculoDePinata.Controls.Add(Me.CheckBoxAllegroManNonTroppo)
+        Me.GroupBoxEspectaculoDePinata.Enabled = False
         Me.GroupBoxEspectaculoDePinata.Location = New System.Drawing.Point(7, 21)
         Me.GroupBoxEspectaculoDePinata.Name = "GroupBoxEspectaculoDePinata"
         Me.GroupBoxEspectaculoDePinata.Size = New System.Drawing.Size(305, 100)
@@ -516,9 +564,9 @@ Partial Class Form1
         Me.CheckBoxAllegroAsiai.AutoSize = True
         Me.CheckBoxAllegroAsiai.Location = New System.Drawing.Point(6, 72)
         Me.CheckBoxAllegroAsiai.Name = "CheckBoxAllegroAsiai"
-        Me.CheckBoxAllegroAsiai.Size = New System.Drawing.Size(169, 19)
+        Me.CheckBoxAllegroAsiai.Size = New System.Drawing.Size(172, 19)
         Me.CheckBoxAllegroAsiai.TabIndex = 6
-        Me.CheckBoxAllegroAsiai.Text = "Música infantil allegro asiai"
+        Me.CheckBoxAllegroAsiai.Text = "Musical infantil allegro asiai"
         Me.CheckBoxAllegroAsiai.UseVisualStyleBackColor = True
         '
         'CheckBoxAllegroMolto
@@ -526,9 +574,9 @@ Partial Class Form1
         Me.CheckBoxAllegroMolto.AutoSize = True
         Me.CheckBoxAllegroMolto.Location = New System.Drawing.Point(6, 47)
         Me.CheckBoxAllegroMolto.Name = "CheckBoxAllegroMolto"
-        Me.CheckBoxAllegroMolto.Size = New System.Drawing.Size(178, 19)
+        Me.CheckBoxAllegroMolto.Size = New System.Drawing.Size(181, 19)
         Me.CheckBoxAllegroMolto.TabIndex = 5
-        Me.CheckBoxAllegroMolto.Text = "Música infantil allegro molto"
+        Me.CheckBoxAllegroMolto.Text = "Musical infantil allegro molto"
         Me.CheckBoxAllegroMolto.UseVisualStyleBackColor = True
         '
         'CheckBoxAllegroManNonTroppo
@@ -536,15 +584,15 @@ Partial Class Form1
         Me.CheckBoxAllegroManNonTroppo.AutoSize = True
         Me.CheckBoxAllegroManNonTroppo.Location = New System.Drawing.Point(6, 22)
         Me.CheckBoxAllegroManNonTroppo.Name = "CheckBoxAllegroManNonTroppo"
-        Me.CheckBoxAllegroManNonTroppo.Size = New System.Drawing.Size(229, 19)
+        Me.CheckBoxAllegroManNonTroppo.Size = New System.Drawing.Size(232, 19)
         Me.CheckBoxAllegroManNonTroppo.TabIndex = 4
-        Me.CheckBoxAllegroManNonTroppo.Text = "Música infantil allegro man non toppo"
+        Me.CheckBoxAllegroManNonTroppo.Text = "Musical infantil allegro man non toppo"
         Me.CheckBoxAllegroManNonTroppo.UseVisualStyleBackColor = True
         '
         'CheckBoxChoferesDesignados
         '
         Me.CheckBoxChoferesDesignados.AutoSize = True
-        Me.CheckBoxChoferesDesignados.Location = New System.Drawing.Point(15, 187)
+        Me.CheckBoxChoferesDesignados.Location = New System.Drawing.Point(15, 186)
         Me.CheckBoxChoferesDesignados.Name = "CheckBoxChoferesDesignados"
         Me.CheckBoxChoferesDesignados.Size = New System.Drawing.Size(136, 19)
         Me.CheckBoxChoferesDesignados.TabIndex = 12
@@ -554,18 +602,16 @@ Partial Class Form1
         'NumericUpDownCantidadDeMeseros
         '
         Me.NumericUpDownCantidadDeMeseros.Enabled = False
-        Me.NumericUpDownCantidadDeMeseros.Location = New System.Drawing.Point(162, 167)
+        Me.NumericUpDownCantidadDeMeseros.Location = New System.Drawing.Point(165, 166)
         Me.NumericUpDownCantidadDeMeseros.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-        Me.NumericUpDownCantidadDeMeseros.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDownCantidadDeMeseros.Name = "NumericUpDownCantidadDeMeseros"
         Me.NumericUpDownCantidadDeMeseros.Size = New System.Drawing.Size(90, 23)
         Me.NumericUpDownCantidadDeMeseros.TabIndex = 6
-        Me.NumericUpDownCantidadDeMeseros.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'CheckBoxEspectaculoArtistico
         '
         Me.CheckBoxEspectaculoArtistico.AutoSize = True
-        Me.CheckBoxEspectaculoArtistico.Location = New System.Drawing.Point(15, 288)
+        Me.CheckBoxEspectaculoArtistico.Location = New System.Drawing.Point(15, 287)
         Me.CheckBoxEspectaculoArtistico.Name = "CheckBoxEspectaculoArtistico"
         Me.CheckBoxEspectaculoArtistico.Size = New System.Drawing.Size(136, 19)
         Me.CheckBoxEspectaculoArtistico.TabIndex = 8
@@ -576,7 +622,7 @@ Partial Class Form1
         '
         Me.LabelCantidadDeMeseros.AutoSize = True
         Me.LabelCantidadDeMeseros.Enabled = False
-        Me.LabelCantidadDeMeseros.Location = New System.Drawing.Point(38, 169)
+        Me.LabelCantidadDeMeseros.Location = New System.Drawing.Point(38, 168)
         Me.LabelCantidadDeMeseros.Name = "LabelCantidadDeMeseros"
         Me.LabelCantidadDeMeseros.Size = New System.Drawing.Size(118, 15)
         Me.LabelCantidadDeMeseros.TabIndex = 5
@@ -585,37 +631,27 @@ Partial Class Form1
         'CheckBoxServicioDeMesero
         '
         Me.CheckBoxServicioDeMesero.AutoSize = True
-        Me.CheckBoxServicioDeMesero.Location = New System.Drawing.Point(15, 147)
+        Me.CheckBoxServicioDeMesero.Location = New System.Drawing.Point(15, 146)
         Me.CheckBoxServicioDeMesero.Name = "CheckBoxServicioDeMesero"
         Me.CheckBoxServicioDeMesero.Size = New System.Drawing.Size(130, 19)
         Me.CheckBoxServicioDeMesero.TabIndex = 4
         Me.CheckBoxServicioDeMesero.Text = "Servicio de meseros"
         Me.CheckBoxServicioDeMesero.UseVisualStyleBackColor = True
         '
-        'CheckBoxRecreacionDirigidaParaNinos
+        'CheckBoxRecreacionDirigidaParaNinosYAdultos
         '
-        Me.CheckBoxRecreacionDirigidaParaNinos.AutoSize = True
-        Me.CheckBoxRecreacionDirigidaParaNinos.Location = New System.Drawing.Point(15, 122)
-        Me.CheckBoxRecreacionDirigidaParaNinos.Name = "CheckBoxRecreacionDirigidaParaNinos"
-        Me.CheckBoxRecreacionDirigidaParaNinos.Size = New System.Drawing.Size(203, 19)
-        Me.CheckBoxRecreacionDirigidaParaNinos.TabIndex = 3
-        Me.CheckBoxRecreacionDirigidaParaNinos.Text = "Recreación dirigida para los niños"
-        Me.CheckBoxRecreacionDirigidaParaNinos.UseVisualStyleBackColor = True
-        '
-        'CheckBoxMusicaParaReunion
-        '
-        Me.CheckBoxMusicaParaReunion.AutoSize = True
-        Me.CheckBoxMusicaParaReunion.Location = New System.Drawing.Point(15, 97)
-        Me.CheckBoxMusicaParaReunion.Name = "CheckBoxMusicaParaReunion"
-        Me.CheckBoxMusicaParaReunion.Size = New System.Drawing.Size(146, 19)
-        Me.CheckBoxMusicaParaReunion.TabIndex = 2
-        Me.CheckBoxMusicaParaReunion.Text = "Música para la reunión"
-        Me.CheckBoxMusicaParaReunion.UseVisualStyleBackColor = True
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos.AutoSize = True
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos.Location = New System.Drawing.Point(15, 121)
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos.Name = "CheckBoxRecreacionDirigidaParaNinosYAdultos"
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos.Size = New System.Drawing.Size(236, 19)
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos.TabIndex = 3
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos.Text = "Recreación dirigida para niños y adultos"
+        Me.CheckBoxRecreacionDirigidaParaNinosYAdultos.UseVisualStyleBackColor = True
         '
         'CheckBoxDecoracionDeSalon
         '
         Me.CheckBoxDecoracionDeSalon.AutoSize = True
-        Me.CheckBoxDecoracionDeSalon.Location = New System.Drawing.Point(15, 72)
+        Me.CheckBoxDecoracionDeSalon.Location = New System.Drawing.Point(15, 96)
         Me.CheckBoxDecoracionDeSalon.Name = "CheckBoxDecoracionDeSalon"
         Me.CheckBoxDecoracionDeSalon.Size = New System.Drawing.Size(133, 19)
         Me.CheckBoxDecoracionDeSalon.TabIndex = 1
@@ -626,7 +662,7 @@ Partial Class Form1
         '
         Me.CheckBoxIncluirBebidaEnRecordatorio.AutoSize = True
         Me.CheckBoxIncluirBebidaEnRecordatorio.Enabled = False
-        Me.CheckBoxIncluirBebidaEnRecordatorio.Location = New System.Drawing.Point(38, 263)
+        Me.CheckBoxIncluirBebidaEnRecordatorio.Location = New System.Drawing.Point(38, 262)
         Me.CheckBoxIncluirBebidaEnRecordatorio.Name = "CheckBoxIncluirBebidaEnRecordatorio"
         Me.CheckBoxIncluirBebidaEnRecordatorio.Size = New System.Drawing.Size(182, 19)
         Me.CheckBoxIncluirBebidaEnRecordatorio.TabIndex = 7
@@ -636,18 +672,124 @@ Partial Class Form1
         'CheckBoxRecordatoriosParaInvitados
         '
         Me.CheckBoxRecordatoriosParaInvitados.AutoSize = True
-        Me.CheckBoxRecordatoriosParaInvitados.Location = New System.Drawing.Point(15, 238)
+        Me.CheckBoxRecordatoriosParaInvitados.Location = New System.Drawing.Point(15, 237)
         Me.CheckBoxRecordatoriosParaInvitados.Name = "CheckBoxRecordatoriosParaInvitados"
         Me.CheckBoxRecordatoriosParaInvitados.Size = New System.Drawing.Size(176, 19)
         Me.CheckBoxRecordatoriosParaInvitados.TabIndex = 0
         Me.CheckBoxRecordatoriosParaInvitados.Text = "Recordatorios para invitados"
         Me.CheckBoxRecordatoriosParaInvitados.UseVisualStyleBackColor = True
         '
+        'ButtonConfirmar
+        '
+        Me.ButtonConfirmar.Location = New System.Drawing.Point(681, 449)
+        Me.ButtonConfirmar.Name = "ButtonConfirmar"
+        Me.ButtonConfirmar.Size = New System.Drawing.Size(107, 46)
+        Me.ButtonConfirmar.TabIndex = 10
+        Me.ButtonConfirmar.Text = "Confirmar"
+        Me.ButtonConfirmar.UseVisualStyleBackColor = True
+        '
+        'DataGridViewTotal
+        '
+        Me.DataGridViewTotal.AllowUserToAddRows = False
+        Me.DataGridViewTotal.AllowUserToDeleteRows = False
+        Me.DataGridViewTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewTotal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nombre, Me.Precio})
+        Me.DataGridViewTotal.Location = New System.Drawing.Point(813, 80)
+        Me.DataGridViewTotal.Name = "DataGridViewTotal"
+        Me.DataGridViewTotal.ReadOnly = True
+        Me.DataGridViewTotal.RowTemplate.Height = 25
+        Me.DataGridViewTotal.Size = New System.Drawing.Size(379, 566)
+        Me.DataGridViewTotal.TabIndex = 11
+        '
+        'Nombre
+        '
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.Width = 250
+        '
+        'Precio
+        '
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        '
+        'LabelCotizacion
+        '
+        Me.LabelCotizacion.AutoSize = True
+        Me.LabelCotizacion.Location = New System.Drawing.Point(813, 58)
+        Me.LabelCotizacion.Name = "LabelCotizacion"
+        Me.LabelCotizacion.Size = New System.Drawing.Size(63, 15)
+        Me.LabelCotizacion.TabIndex = 12
+        Me.LabelCotizacion.Text = "Cotizacion"
+        '
+        'GroupBoxMoneda
+        '
+        Me.GroupBoxMoneda.Controls.Add(Me.RadioButtonBalboa)
+        Me.GroupBoxMoneda.Controls.Add(Me.RadioButtonPesosColombianos)
+        Me.GroupBoxMoneda.Location = New System.Drawing.Point(366, 449)
+        Me.GroupBoxMoneda.Name = "GroupBoxMoneda"
+        Me.GroupBoxMoneda.Size = New System.Drawing.Size(207, 100)
+        Me.GroupBoxMoneda.TabIndex = 13
+        Me.GroupBoxMoneda.TabStop = False
+        Me.GroupBoxMoneda.Text = "Moneda"
+        '
+        'RadioButtonBalboa
+        '
+        Me.RadioButtonBalboa.AutoSize = True
+        Me.RadioButtonBalboa.Location = New System.Drawing.Point(27, 50)
+        Me.RadioButtonBalboa.Name = "RadioButtonBalboa"
+        Me.RadioButtonBalboa.Size = New System.Drawing.Size(61, 19)
+        Me.RadioButtonBalboa.TabIndex = 1
+        Me.RadioButtonBalboa.Text = "Balboa"
+        Me.RadioButtonBalboa.UseVisualStyleBackColor = True
+        '
+        'RadioButtonPesosColombianos
+        '
+        Me.RadioButtonPesosColombianos.AutoSize = True
+        Me.RadioButtonPesosColombianos.Checked = True
+        Me.RadioButtonPesosColombianos.Location = New System.Drawing.Point(27, 25)
+        Me.RadioButtonPesosColombianos.Name = "RadioButtonPesosColombianos"
+        Me.RadioButtonPesosColombianos.Size = New System.Drawing.Size(129, 19)
+        Me.RadioButtonPesosColombianos.TabIndex = 0
+        Me.RadioButtonPesosColombianos.TabStop = True
+        Me.RadioButtonPesosColombianos.Text = "Pesos Colombianos"
+        Me.RadioButtonPesosColombianos.UseVisualStyleBackColor = True
+        '
+        'NumericUpDownCantidadDeNinas
+        '
+        Me.NumericUpDownCantidadDeNinas.AccessibleDescription = "Si la cantidad de niños supera los 100 se considera una Piñata en vez de Piñatica" &
+    ""
+        Me.NumericUpDownCantidadDeNinas.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolTip
+        Me.NumericUpDownCantidadDeNinas.Location = New System.Drawing.Point(476, 82)
+        Me.NumericUpDownCantidadDeNinas.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.NumericUpDownCantidadDeNinas.Name = "NumericUpDownCantidadDeNinas"
+        Me.NumericUpDownCantidadDeNinas.Size = New System.Drawing.Size(97, 23)
+        Me.NumericUpDownCantidadDeNinas.TabIndex = 15
+        '
+        'LabelCantidadDeNinas
+        '
+        Me.LabelCantidadDeNinas.AutoSize = True
+        Me.LabelCantidadDeNinas.Location = New System.Drawing.Point(366, 84)
+        Me.LabelCantidadDeNinas.Name = "LabelCantidadDeNinas"
+        Me.LabelCantidadDeNinas.Size = New System.Drawing.Size(102, 15)
+        Me.LabelCantidadDeNinas.TabIndex = 14
+        Me.LabelCantidadDeNinas.Text = "Cantidad de niñas"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1251, 678)
+        Me.ClientSize = New System.Drawing.Size(1200, 654)
+        Me.Controls.Add(Me.NumericUpDownCantidadDeNinas)
+        Me.Controls.Add(Me.LabelCantidadDeNinas)
+        Me.Controls.Add(Me.GroupBoxMoneda)
+        Me.Controls.Add(Me.LabelCotizacion)
+        Me.Controls.Add(Me.DataGridViewTotal)
+        Me.Controls.Add(Me.ButtonConfirmar)
         Me.Controls.Add(Me.GroupBoxServiciosAdicionales)
         Me.Controls.Add(Me.GroupBoxFormaDePago)
         Me.Controls.Add(Me.GroupBoxDuracionDeFiesta)
@@ -655,7 +797,7 @@ Partial Class Form1
         Me.Controls.Add(Me.GroupBoxTipoDeComida)
         Me.Controls.Add(Me.NumericUpDownCantidadDeNinos)
         Me.Controls.Add(Me.LabelCantidadDeNinos)
-        Me.Controls.Add(Me.LabelCotizacion)
+        Me.Controls.Add(Me.LabelNuevaCotizacion)
         Me.Controls.Add(Me.LabelTitle)
         Me.Name = "Form1"
         Me.Text = "El Payaso Feliz"
@@ -672,6 +814,7 @@ Partial Class Form1
         Me.GroupBoxFormaDePago.PerformLayout()
         Me.GroupBoxServiciosAdicionales.ResumeLayout(False)
         Me.GroupBoxServiciosAdicionales.PerformLayout()
+        CType(Me.NumericUpDownDuracionMusica, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownCantidadDeChoferes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBoxEspectaculos.ResumeLayout(False)
         Me.GroupBoxEspectaculoDePinatica.ResumeLayout(False)
@@ -679,13 +822,17 @@ Partial Class Form1
         Me.GroupBoxEspectaculoDePinata.ResumeLayout(False)
         Me.GroupBoxEspectaculoDePinata.PerformLayout()
         CType(Me.NumericUpDownCantidadDeMeseros, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewTotal, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBoxMoneda.ResumeLayout(False)
+        Me.GroupBoxMoneda.PerformLayout()
+        CType(Me.NumericUpDownCantidadDeNinas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents LabelTitle As Label
-    Friend WithEvents LabelCotizacion As Label
+    Friend WithEvents LabelNuevaCotizacion As Label
     Friend WithEvents LabelCantidadDeNinos As Label
     Friend WithEvents NumericUpDownCantidadDeNinos As NumericUpDown
     Friend WithEvents GroupBoxTipoDeComida As GroupBox
@@ -712,8 +859,7 @@ Partial Class Form1
     Friend WithEvents RadioButtonTarjetaDebito As RadioButton
     Friend WithEvents GroupBoxServiciosAdicionales As GroupBox
     Friend WithEvents CheckBoxServicioDeMesero As CheckBox
-    Friend WithEvents CheckBoxRecreacionDirigidaParaNinos As CheckBox
-    Friend WithEvents CheckBoxMusicaParaReunion As CheckBox
+    Friend WithEvents CheckBoxRecreacionDirigidaParaNinosYAdultos As CheckBox
     Friend WithEvents CheckBoxDecoracionDeSalon As CheckBox
     Friend WithEvents CheckBoxRecordatoriosParaInvitados As CheckBox
     Friend WithEvents CheckBoxIncluirBebidaEnRecordatorio As CheckBox
@@ -735,4 +881,17 @@ Partial Class Form1
     Friend WithEvents CheckBoxAllegroAsiai As CheckBox
     Friend WithEvents CheckBoxAllegroMolto As CheckBox
     Friend WithEvents CheckBoxAllegroManNonTroppo As CheckBox
+    Friend WithEvents ButtonConfirmar As Button
+    Friend WithEvents DataGridViewTotal As DataGridView
+    Friend WithEvents LabelCotizacion As Label
+    Friend WithEvents Nombre As DataGridViewTextBoxColumn
+    Friend WithEvents Precio As DataGridViewTextBoxColumn
+    Friend WithEvents GroupBoxMoneda As GroupBox
+    Friend WithEvents RadioButtonBalboa As RadioButton
+    Friend WithEvents RadioButtonPesosColombianos As RadioButton
+    Friend WithEvents NumericUpDownCantidadDeNinas As NumericUpDown
+    Friend WithEvents LabelCantidadDeNinas As Label
+    Friend WithEvents NumericUpDownDuracionMusica As NumericUpDown
+    Friend WithEvents LabelCantidadDeHorasParaLaMusica As Label
+    Friend WithEvents CheckBoxMusicaParaReunion As CheckBox
 End Class
